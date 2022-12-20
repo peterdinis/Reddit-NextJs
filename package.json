@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "cypress": "cypress oepn"
+    "test": "cypress open"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.4.4",
