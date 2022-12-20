@@ -14,9 +14,7 @@ const Navbar: React.FC = () => {
                     md: "unset" // display none
                 }} />
             </Flex>
-            <Directory />
             <SearchInput />
-            <RightSidebar />
         </Flex>
     )
 }

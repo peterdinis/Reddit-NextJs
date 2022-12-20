@@ -2,29 +2,45 @@ import {
   Flex,
   Input,
   InputGroup,
-  InputLeftAddon,
-  InputRightAddon,
-  Stack,
+  InputLeftElement
 } from "@chakra-ui/react";
 import React from "react";
+import { SearchIcon } from "@chakra-ui/icons";
 
 interface SearchInputProps {}
 
 const SearchInput: React.FC<SearchInputProps> = () => {
   return (
-    <Flex>
-      <Stack spacing={4}>
-        <InputGroup>
-          <InputLeftAddon children="+234" />
-          <Input type="tel" placeholder="phone number" />
-        </InputGroup>
-
-        <InputGroup size="sm">
-          <InputLeftAddon children="https://" />
-          <Input placeholder="mysite" />
-          <InputRightAddon children=".com" />
-        </InputGroup>
-      </Stack>
+    <Flex
+      flexGrow={1}
+      mr={2}
+      alignItems="center"
+    >
+      <InputGroup>
+        <InputLeftElement
+          pointerEvents="none"
+          color="gray.400"
+        >
+          <SearchIcon mb={2} />
+        </InputLeftElement>
+        <Input
+          placeholder="Search Reddit"
+          fontSize="10pt"
+          _placeholder={{ color: "gray.500" }}
+          _hover={{
+            bg: "white",
+            border: "1px solid",
+            borderColor: "blue.500",
+          }}
+          _focus={{
+            outline: "none",
+            border: "1px solid",
+            borderColor: "blue.500",
+          }}
+          height="34px"
+          bg="gray.50"
+        />
+      </InputGroup>
     </Flex>
   );
 };

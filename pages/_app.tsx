@@ -7,12 +7,12 @@ import { RecoilRoot } from "recoil";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <Layout>
-      <RecoilRoot>
-        <ChakraProvider theme={theme}>
+    <RecoilRoot>
+      <ChakraProvider theme={theme}>
+        <Layout>
           <Component {...pageProps} />
-        </ChakraProvider>
-      </RecoilRoot>
-    </Layout>
+        </Layout>
+      </ChakraProvider>
+    </RecoilRoot>
   );
 }
