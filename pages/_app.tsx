@@ -6,10 +6,10 @@ import Layout from "../components/shared/Layout";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
+    <Layout>
     <ChakraProvider theme={theme}>
-      <Layout>
         <Component {...pageProps} />
-      </Layout>
     </ChakraProvider>
+    </Layout>
   );
 }
