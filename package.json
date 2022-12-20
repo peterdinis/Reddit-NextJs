@@ -10,6 +10,7 @@
     "test": "cypress open"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.14",
     "@chakra-ui/react": "^2.4.4",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
@@ -30,10 +31,6 @@
     "typescript": "4.9.4"
   },
   "devDependencies": {
-    "@types/cypress-cucumber-preprocessor": "^4.0.1"
-  },
-
-  "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": true
+    "@types/recoil": "^0.0.9"
   }
 }
