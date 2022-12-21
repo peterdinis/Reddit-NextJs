@@ -1,13 +1,17 @@
-import { Flex } from '@chakra-ui/react'
-import React from 'react'
-import AuthButtons from '../../auth/AuthButtons'
+import { Flex } from "@chakra-ui/react";
+import React from "react";
+import AuthButtons from "../../auth/AuthButtons";
+import AuthModal from "../../auth/AuthModal";
 
 function RightSidebar() {
   return (
-    <Flex justify="center" align="center">
-      <AuthButtons />
-    </Flex>
-  )
+    <>
+      <AuthModal />
+      <Flex justify="center" align="center">
+        <AuthButtons />
+      </Flex>
+    </>
+  );
 }
 
-export default RightSidebar
+export default RightSidebar;
