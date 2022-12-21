@@ -4,44 +4,34 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
-  Box,
-  Button,
-  useDisclosure,
 } from "@chakra-ui/react";
+import { useRecoilState } from "recoil";
+import { authModalState } from "../../recoil/atoms/authModalAtom";
 
 const AuthModal: React.FC = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const finalRef = React.useRef(null);
+  const [modalState, setModalState] = useRecoilState(authModalState);
+
+  const handleClose = () => {
+    setModalState((prev) => ({
+      ...prev,
+      open: false,
+    }));
+  };
 
   return (
     <>
-      <Box ref={finalRef} tabIndex={-1} aria-label="Focus moved to this box">
-        Some other content that'll receive focus on close.
-      </Box>
-
-      <Button mt={4} onClick={onOpen}>
-        Open Modal
-      </Button>
-      <Modal finalFocusRef={finalRef} isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={modalState.open} onClose={handleClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader>Modal File</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Necessitatibus, rem alias molestias nulla tempore doloremque
-            possimus beatae accusamus quod culpa.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+            dicta illum dolorum libero corrupti ratione nobis magnam voluptates
+            tempora iusto?
           </ModalBody>
-
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Close
-            </Button>
-            <Button variant="ghost">Secondary Action</Button>
-          </ModalFooter>
         </ModalContent>
       </Modal>
     </>
