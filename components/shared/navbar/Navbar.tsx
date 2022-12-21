@@ -15,6 +15,7 @@ const Navbar: React.FC = () => {
                 }} />
             </Flex>
             <SearchInput />
+            <RightSidebar />
         </Flex>
     )
 }

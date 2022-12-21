@@ -1,8 +1,12 @@
+import { Flex } from '@chakra-ui/react'
 import React from 'react'
+import AuthButtons from '../../auth/AuthButtons'
 
 function RightSidebar() {
   return (
-    <div>RightSidebar</div>
+    <Flex justify="center" align="center">
+      <AuthButtons />
+    </Flex>
   )
 }
 

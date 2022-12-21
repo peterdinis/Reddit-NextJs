@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@chakra-ui/icons': ^2.0.14
   '@chakra-ui/react': ^2.4.4
+  '@chakra-ui/theme': ^2.2.2
   '@emotion/react': ^11
   '@emotion/styled': ^11
   '@next/font': 13.0.7
@@ -25,6 +26,7 @@ specifiers:
 dependencies:
   '@chakra-ui/icons': 2.0.14_react@18.2.0
   '@chakra-ui/react': 2.4.4_uibis2bm44wz3hkzfktj2mle4y
+  '@chakra-ui/theme': 2.2.2
   '@emotion/react': 11.10.5_kzbn2opkn2327fwg5yzwzya5o4
   '@emotion/styled': 11.10.5_qvatmowesywn4ye42qoh247szu
   '@next/font': 13.0.7
@@ -2241,6 +2243,15 @@ packages:
       react: 18.2.0
     dev: false
 
+  /@chakra-ui/theme-tools/2.0.14:
+    resolution: {integrity: sha512-lVcDmq5pyU0QbsIFKjt/iVUFDap7di2QHvPvGChA1YSjtg1PtuUi+BxEXWzp3Nfgw/N4rMvlBs+S0ynJypdwbg==}
+    peerDependencies:
+      '@chakra-ui/styled-system': '>=2.0.0'
+    dependencies:
+      '@chakra-ui/anatomy': 2.1.0
+      color2k: 2.0.0
+    dev: false
+
   /@chakra-ui/theme-tools/2.0.14_egcizgpwtsioofm7hx34ab4iqi:
     resolution: {integrity: sha512-lVcDmq5pyU0QbsIFKjt/iVUFDap7di2QHvPvGChA1YSjtg1PtuUi+BxEXWzp3Nfgw/N4rMvlBs+S0ynJypdwbg==}
     peerDependencies:
@@ -2257,6 +2268,15 @@ packages:
       '@chakra-ui/styled-system': 2.5.0
       '@chakra-ui/theme': 2.2.2_egcizgpwtsioofm7hx34ab4iqi
       lodash.mergewith: 4.6.2
+    dev: false
+
+  /@chakra-ui/theme/2.2.2:
+    resolution: {integrity: sha512-7DlOQiXmnaqYyqXwqmfFSCWGkUonuqmNC5mmUCwxI435KgHNCaE2bIm6DI7N2NcIcuVcfc8Vn0UqrDoGU3zJBg==}
+    peerDependencies:
+      '@chakra-ui/styled-system': '>=2.0.0'
+    dependencies:
+      '@chakra-ui/anatomy': 2.1.0
+      '@chakra-ui/theme-tools': 2.0.14
     dev: false
 
   /@chakra-ui/theme/2.2.2_egcizgpwtsioofm7hx34ab4iqi:
