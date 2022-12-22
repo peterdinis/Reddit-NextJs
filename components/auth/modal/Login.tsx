@@ -10,7 +10,12 @@ const Login: React.FC = () => {
 
   const onSubmitForm = () => {}
 
-  const onChangeInput = () => {}
+  const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setLoginForm(prev=> ({
+        ...prev,
+        [event.target.name]: event.target.value // name = name = "email"
+    }))
+  }
 
   return (
     <form onSubmit={onSubmitForm}> 
