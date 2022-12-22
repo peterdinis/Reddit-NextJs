@@ -1,8 +1,13 @@
+import { Button, Flex } from '@chakra-ui/react'
 import React from 'react'
 
 function OAuthButtons() {
   return (
-    <div>OAuthButtons</div>
+    <>
+      <Flex direction="column" width="100%" mb={4}>
+        <Button>Sign in with google</Button>
+      </Flex>
+    </>
   )
 }
 
