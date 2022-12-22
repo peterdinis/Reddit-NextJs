@@ -9,9 +9,9 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
-import { authModalState } from "../../recoil/atoms/authModalAtom";
-import OAuthButtons from "./OAuthButtons";
-import LoginForm from "./LoginForm";
+import { authModalState } from "../../../recoil/atoms/authModalAtom";
+import OAuthButtons from "../OAuthButtons";
+import LoginForm from "../LoginForm";
 
 const AuthModal: React.FC = () => {
   const [modalState, setModalState] = useRecoilState(authModalState);
