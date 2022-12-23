@@ -19,6 +19,7 @@ const Signup: React.FC = () => {
 
   const onSubmitForm = (event: React.FormEvent) => {
     event.preventDefault();
+    if(formError) setFormError("");
     if(signupForm.password !== signupForm.confirmPassword) {
       setFormError("Password not match");
       return;
