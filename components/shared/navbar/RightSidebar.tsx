@@ -1,19 +1,35 @@
 import React from "react";
-import { Flex, Text } from "@chakra-ui/react";
-import { User } from "firebase/auth";
+import { Button, Flex, Text } from "@chakra-ui/react";
+import { User, signOut } from "firebase/auth";
 import AuthModal from "../../auth/modal/AuthModal";
 import AuthButtons from "../../auth/buttons/AuthButtons";
+import { auth } from "../../../firebase/init";
+import { useRouter } from "next/router";
 
 type RightSidebarProps = {
-  user: User;
+  user: User | any; // TODO: Later remove any
 };
 
 const RightSidebar: React.FC<RightSidebarProps> = ({ user }) => {
+  
+  const router = useRouter();
+  
+  const logoutUser = () => {
+    signOut(auth);
+    router.push("/");
+  };
+
   return (
     <>
       <AuthModal />
       <Flex justifyContent="space-between" alignItems="center">
-        {user ? <Text>FOO</Text> : <AuthButtons />}
+        {user ? (
+          <Button onClick={logoutUser}>
+            <Text>Logout</Text>
+          </Button>
+        ) : (
+          <AuthButtons />
+        )}
       </Flex>
     </>
   );
