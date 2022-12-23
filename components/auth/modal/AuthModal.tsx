@@ -12,6 +12,8 @@ import { useRecoilState } from "recoil";
 import { authModalState } from "../../../recoil/atoms/authModalAtom";
 import AuthInputs from "./AuthInputs";
 import OAuthButtons from "../buttons/OAuthButtons";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../../firebase/init";
 
 const AuthModal: React.FC = () => {
   const [modalState, setModalState] = useRecoilState(authModalState);
@@ -22,6 +24,14 @@ const AuthModal: React.FC = () => {
       open: false,
     }));
   };
+
+  const [user, loading, error] = useAuthState(auth);
+
+  React.useEffect(() => {
+    // if user object change this snippet will be running
+    if(user) handleClose();
+    console.log(user);
+  }, [user])
 
   return (
     <>

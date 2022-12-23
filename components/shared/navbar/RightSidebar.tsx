@@ -1,17 +1,21 @@
-import { Flex } from "@chakra-ui/react";
 import React from "react";
-import AuthButtons from "../../auth/buttons/AuthButtons";
+import { Flex, Text } from "@chakra-ui/react";
+import { User } from "firebase/auth";
 import AuthModal from "../../auth/modal/AuthModal";
+import AuthButtons from "../../auth/buttons/AuthButtons";
 
-function RightSidebar() {
+type RightSidebarProps = {
+  user: User;
+};
+
+const RightSidebar: React.FC<RightSidebarProps> = ({ user }) => {
   return (
     <>
       <AuthModal />
-      <Flex justify="center" align="center">
-        <AuthButtons />
+      <Flex justifyContent="space-between" alignItems="center">
+        {user ? <Text>FOO</Text> : <AuthButtons />}
       </Flex>
     </>
   );
-}
-
+};
 export default RightSidebar;

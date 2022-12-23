@@ -8,14 +8,18 @@ import { auth } from "../../../firebase/init";
 // TODO: Later add some error handling 
 const Login: React.FC = () => {
   const setAuthModalState = useSetRecoilState(authModalState);
-
+  const [formError, setFormError] = React.useState("");
   const [loginForm, setLoginForm] = React.useState({
     email: "",
     password: "",
   });
 
-  const [createUserWithEmailAndPassword, user, loading, userError] = useSignInWithEmailAndPassword(auth);
-  const onSubmitForm = (event: React.FormEvent) => {};
+  const [signInWithEmailAndPassword, user, loading, userError] = useSignInWithEmailAndPassword(auth);
+  
+  const onSubmitForm = (event: React.FormEvent) => {
+    event.preventDefault();
+    signInWithEmailAndPassword(loginForm.email, loginForm.password);
+  };
 
   const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setLoginForm((prev) => ({
@@ -39,6 +43,11 @@ const Login: React.FC = () => {
         type="password"
         onChange={onChangeInput}
       />
+      {formError || userError && (
+        <Text color="red" textAlign="center" fontSize="10px">
+          {userError.message}
+        </Text>
+      )}
       <Button width="100%" height="36px" mb={2} mt={2} type="submit">
         Log In
       </Button>

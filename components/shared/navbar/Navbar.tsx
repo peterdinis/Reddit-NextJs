@@ -1,7 +1,6 @@
 import { Flex, Image } from "@chakra-ui/react"
 import React from "react"
 import SearchInput from "./SearchInput"
-import Directory from "./Directory"
 import RightSidebar from "./RightSidebar"
 
 const Navbar: React.FC = () => {
