@@ -3,6 +3,7 @@ import React from "react";
 import { useSetRecoilState } from "recoil";
 import { authModalState } from "../../../recoil/atoms/authModalAtom";
 
+// TODO: Later add some error handling 
 const Login: React.FC = () => {
   const setAuthModalState = useSetRecoilState(authModalState);
 
@@ -11,7 +12,7 @@ const Login: React.FC = () => {
     password: "",
   });
 
-  const onSubmitForm = () => {};
+  const onSubmitForm = (event: React.FormEvent) => {};
 
   const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setLoginForm((prev) => ({

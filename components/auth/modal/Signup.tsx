@@ -5,6 +5,7 @@ import { authModalState } from "../../../recoil/atoms/authModalAtom";
 import { auth } from "../../../firebase/init";
 import {useCreateUserWithEmailAndPassword} from "react-firebase-hooks/auth"
 
+// TODO: Later add some error handling 
 const Signup: React.FC = () => {
   const setAuthModalState = useSetRecoilState(authModalState);
 
@@ -15,7 +16,7 @@ const Signup: React.FC = () => {
   });
   const [formError, setFormError] = React.useState("");
 
-  const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth);
+  const [createUserWithEmailAndPassword, user, loading, userError] = useCreateUserWithEmailAndPassword(auth);
 
   const onSubmitForm = (event: React.FormEvent) => {
     event.preventDefault();
@@ -26,7 +27,6 @@ const Signup: React.FC = () => {
     }
 
     createUserWithEmailAndPassword(signupForm.email, signupForm.password);
-    console.log("Ping work");
   };
 
   const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -60,6 +60,11 @@ const Signup: React.FC = () => {
         mb={2}
         onChange={onChangeInput}
       />
+      {formError || userError && (
+        <Text color="red" textAlign="center" fontSize="10px">
+          {userError.message}
+        </Text>
+      )}
       <Button width="100%" height="36px" mb={2} mt={2} type="submit">
         Sign up
       </Button>
