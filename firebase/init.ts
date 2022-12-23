@@ -3,14 +3,15 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
+// TODO: Later replace this with env variables
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_API_KEY as string,
-  authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN as string,
-  projectId: process.env.NEXT_PUBLIC_PROJECT_ID as string,
-  storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET as string,
-  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID as string,
-  appId: process.env.APP_ID as string,
-  measurementId: process.env.MEASUREMENT_ID as string
+  apiKey: "AIzaSyDY5okMaX3iNhE3P0oxAGR2UQ_mlv1N0HA",
+  authDomain: "reddit-clone-9c7ac.firebaseapp.com",
+  projectId: "reddit-clone-9c7ac",
+  storageBucket: "reddit-clone-9c7ac.appspot.com",
+  messagingSenderId: "733422500744",
+  appId: "1:733422500744:web:f0f8ef7259a6737fd0583d",
+  measurementId: "G-LZFJN88HH8",
 };
 
 const app = initializeApp(firebaseConfig);
