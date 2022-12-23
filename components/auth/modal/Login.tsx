@@ -2,6 +2,8 @@ import { Button, Flex, Input, Text } from "@chakra-ui/react";
 import React from "react";
 import { useSetRecoilState } from "recoil";
 import { authModalState } from "../../../recoil/atoms/authModalAtom";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { auth } from "../../../firebase/init";
 
 // TODO: Later add some error handling 
 const Login: React.FC = () => {
@@ -12,6 +14,7 @@ const Login: React.FC = () => {
     password: "",
   });
 
+  const [createUserWithEmailAndPassword, user, loading, userError] = useSignInWithEmailAndPassword(auth);
   const onSubmitForm = (event: React.FormEvent) => {};
 
   const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
