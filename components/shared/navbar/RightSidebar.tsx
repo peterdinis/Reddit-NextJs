@@ -1,6 +1,6 @@
 import { Flex } from "@chakra-ui/react";
 import React from "react";
-import AuthButtons from "../../auth/AuthButtons";
+import AuthButtons from "../../auth/buttons/AuthButtons";
 import AuthModal from "../../auth/modal/AuthModal";
 
 function RightSidebar() {
