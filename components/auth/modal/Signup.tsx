@@ -26,6 +26,7 @@ const Signup: React.FC = () => {
     }
 
     createUserWithEmailAndPassword(signupForm.email, signupForm.password);
+    console.log("Ping work");
   };
 
   const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,6 +49,7 @@ const Signup: React.FC = () => {
         name="password"
         placeholder="password"
         type="password"
+        mb={2}
         onChange={onChangeInput}
       />
 
@@ -55,14 +57,16 @@ const Signup: React.FC = () => {
         name="confirmPassword"
         placeholder="Confirm Password"
         type="password"
+        mb={2}
         onChange={onChangeInput}
       />
       <Button width="100%" height="36px" mb={2} mt={2} type="submit">
         Sign up
       </Button>
       <Flex fontSize="8px" justifyContent="center">
-        <Text mr={1}>Already have an account</Text>
+        <Text fontSize="1rem" mr={1}>Already have an account</Text>
         <Text
+          fontSize="1rem"
           onClick={() =>
             setAuthModalState((prev) => ({
               ...prev,

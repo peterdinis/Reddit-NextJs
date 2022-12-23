@@ -39,11 +39,11 @@ const Login: React.FC = () => {
         Log In
       </Button>
       <Flex fontSize="8px" justifyContent="center">
-        <Text mr={1}>New Here</Text>
+        <Text fontSize="1rem" mr={1}>New Here</Text>
         <Text onClick={() => setAuthModalState(prev =>({
             ...prev,
             view: "signup"
-        }))} color="blue.500" fontWeight={700} cursor="pointer">Sign up</Text>
+        }))} color="blue.500" fontSize="1rem" fontWeight={700} cursor="pointer">Sign up</Text>
       </Flex>
     </form>
   );
