@@ -8,6 +8,7 @@ import {
   IoNotificationsOutline,
   IoVideocamOutline,
 } from "react-icons/io5";
+import useDirectory from "../../../hooks/useDirectory";
 
 type IconsProps = {};
 
