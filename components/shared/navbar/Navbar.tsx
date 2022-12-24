@@ -4,6 +4,7 @@ import SearchInput from "./SearchInput"
 import RightSidebar from "./RightSidebar"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { auth } from "../../../firebase/init"
+import Icons from "./Icons"
 
 const Navbar: React.FC = () => {
     const [user] = useAuthState(auth)
@@ -17,6 +18,7 @@ const Navbar: React.FC = () => {
                 }} />
             </Flex>
             <SearchInput />
+            <Icons />
             <RightSidebar user={user} />
         </Flex>
     )
