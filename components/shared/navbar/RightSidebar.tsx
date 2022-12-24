@@ -33,7 +33,7 @@ const RightSidebar: React.FC<RightSidebarProps> = ({ user }) => {
         ) : (
           <AuthButtons />
         )}
-        <Menu />
+        {/* <Menu /> */}
       </Flex>
     </>
   );
