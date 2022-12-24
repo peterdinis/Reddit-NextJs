@@ -5,9 +5,10 @@ import AuthModal from "../../auth/modal/AuthModal";
 import AuthButtons from "../../auth/buttons/AuthButtons";
 import { auth } from "../../../firebase/init";
 import { useRouter } from "next/router";
+import Menu from "./Menu";
 
 type RightSidebarProps = {
-  user: User | any; // TODO: Later remove any
+  user?: User | null;
 };
 
 const RightSidebar: React.FC<RightSidebarProps> = ({ user }) => {
@@ -18,6 +19,8 @@ const RightSidebar: React.FC<RightSidebarProps> = ({ user }) => {
     signOut(auth);
     router.push("/");
   };
+
+  console.log("User", user);
 
   return (
     <>
@@ -30,6 +33,7 @@ const RightSidebar: React.FC<RightSidebarProps> = ({ user }) => {
         ) : (
           <AuthButtons />
         )}
+        <Menu />
       </Flex>
     </>
   );
