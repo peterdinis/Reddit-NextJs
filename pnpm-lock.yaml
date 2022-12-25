@@ -25,6 +25,7 @@ specifiers:
   react-icons: ^4.7.1
   recoil: ^0.7.6
   typescript: 4.9.4
+  zod: ^3.20.2
 
 dependencies:
   '@chakra-ui/icons': 2.0.14_react@18.2.0
@@ -49,6 +50,7 @@ dependencies:
   react-icons: 4.7.1_react@18.2.0
   recoil: 0.7.6_biqbaboplfbrettd7655fr4n2y
   typescript: 4.9.4
+  zod: 3.20.2
 
 devDependencies:
   '@types/firebase': 3.2.1
@@ -5281,4 +5283,8 @@ packages:
   /yocto-queue/0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+    dev: false
+
+  /zod/3.20.2:
+    resolution: {integrity: sha512-1MzNQdAvO+54H+EaK5YpyEy0T+Ejo/7YLHS93G3RnYWh5gaotGHwGeN/ZO687qEDU2y4CdStQYXVHIgrUl5UVQ==}
     dev: false
