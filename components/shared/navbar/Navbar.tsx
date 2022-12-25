@@ -7,6 +7,7 @@ import { auth } from "../../../firebase/init";
 import useDirectory from "../../../hooks/useDirectory";
 import { User } from "firebase/auth";
 import { defaultMenuItem } from "../../../recoil/atoms/directoryMenuAtoms";
+import Directory from "./Directory";
 
 const Navbar: React.FC = () => {
   const [user] = useAuthState(auth);
