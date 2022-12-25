@@ -4,29 +4,38 @@ import SearchInput from "./SearchInput";
 import RightSidebar from "./RightSidebar";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../../firebase/init";
-import Icons from "./Icons";
+import useDirectory from "../../../hooks/useDirectory";
+import { User } from "firebase/auth";
+import { defaultMenuItem } from "../../../recoil/atoms/directoryMenuAtoms";
 
 const Navbar: React.FC = () => {
   const [user] = useAuthState(auth);
+  const { onSelectMenuItem } = useDirectory();
+
   return (
-    <Flex bg="white" height="44px" padding="8px 12px">
-      <Flex align="center">
+     <Flex
+      bg="white"
+      height="44px"
+      padding="6px 12px"
+      justifyContent={{ md: "space-between" }}
+    >
+      <Flex
+        align="center"
+        width={{ base: "40px", md: "auto" }}
+        mr={{ base: 0, md: 2 }}
+        cursor="pointer"
+        onClick={() => onSelectMenuItem(defaultMenuItem)}
+      >
+        <Image src="/images/redditFace.svg" height="30px" />
         <Image
-          src="https://raw.githubusercontent.com/shadeemerhi/reddit-clone-yt/dcaa8c107fb638b0541aca5d7aba9a49e70a7f81/public/images/redditFace.svg"
-          height="30px"
-        />
-        <Image
-          src="https://raw.githubusercontent.com/shadeemerhi/reddit-clone-yt/dcaa8c107fb638b0541aca5d7aba9a49e70a7f81/public/images/redditText.svg"
+          display={{ base: "none", md: "unset" }}
+          src="/images/redditText.svg"
           height="46px"
-          display={{
-            base: "none", // mobile base size
-            md: "unset", // display none
-          }}
         />
       </Flex>
-      <SearchInput />
-      <Icons />
-      <RightSidebar user={user} />
+      {user && <Directory />}
+      <SearchInput user={user as User} />
+      <RightSidebar user={user as User} />
     </Flex>
   );
 };
