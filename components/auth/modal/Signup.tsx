@@ -18,7 +18,7 @@ const Signup: React.FC = () => {
   });
   const [formError, setFormError] = React.useState("");
 
-  const [createUserWithEmailAndPassword, userCred, loading, userError] = useCreateUserWithEmailAndPassword(auth);
+  const [createUserWithEmailAndPassword, userCred] = useCreateUserWithEmailAndPassword(auth);
 
   const onSubmitForm = (event: React.FormEvent) => {
     event.preventDefault();
@@ -73,9 +73,9 @@ const Signup: React.FC = () => {
         mb={2}
         onChange={onChangeInput}
       />
-      {formError || userError && (
+      {formError && (
         <Text color="red" textAlign="center" fontSize="10px">
-          {userError.message}
+          {formError}
         </Text>
       )}
       <Button width="100%" height="36px" mb={2} mt={2} type="submit">
