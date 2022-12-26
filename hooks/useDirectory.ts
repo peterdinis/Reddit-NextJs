@@ -6,7 +6,7 @@ import {
   defaultMenuItem,
   DirectoryMenuItem,
   directoryMenuState,
-} from "../recoil/atoms/directoryMenuAtoms";
+} from "../recoil/atoms/directoryMenuAtom";
 import { FaReddit } from "react-icons/fa";
 
 const useDirectory = () => {
