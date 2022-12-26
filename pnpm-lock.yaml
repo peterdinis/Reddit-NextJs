@@ -12,6 +12,7 @@ specifiers:
   '@types/react': 18.0.26
   '@types/react-dom': 18.0.9
   '@types/recoil': ^0.0.9
+  '@types/safe-json-stringify': ^1.1.2
   cypress: ^12.1.0
   eslint: 8.30.0
   eslint-config-next: 13.0.7
@@ -26,6 +27,7 @@ specifiers:
   react-hook-form: ^7.41.0
   react-icons: ^4.7.1
   recoil: ^0.7.6
+  safe-json-stringify: ^1.2.0
   typescript: 4.9.4
   zod: ^3.20.2
 
@@ -53,12 +55,14 @@ dependencies:
   react-hook-form: 7.41.0_react@18.2.0
   react-icons: 4.7.1_react@18.2.0
   recoil: 0.7.6_biqbaboplfbrettd7655fr4n2y
+  safe-json-stringify: 1.2.0
   typescript: 4.9.4
   zod: 3.20.2
 
 devDependencies:
   '@types/firebase': 3.2.1
   '@types/recoil': 0.0.9_biqbaboplfbrettd7655fr4n2y
+  '@types/safe-json-stringify': 1.1.2
 
 packages:
 
@@ -2414,6 +2418,10 @@ packages:
       - react
       - react-dom
       - react-native
+    dev: true
+
+  /@types/safe-json-stringify/1.1.2:
+    resolution: {integrity: sha512-Hj/LZMBXFH3Qj9sNmNu6syBpkZqBaM00HgP7naf9CnZhB3kdxmrenWUD2cY6vvTWjuBM3NPOLknPKDUOQuTWXA==}
     dev: true
 
   /@types/scheduler/0.16.2:
@@ -5866,6 +5874,10 @@ packages:
 
   /safe-buffer/5.2.1:
     resolution: {integrity: sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==}
+
+  /safe-json-stringify/1.2.0:
+    resolution: {integrity: sha512-gH8eh2nZudPQO6TytOvbxnuhYBOvDBBLW52tz5q6X58lJcd/tkmqFR+5Z9adS8aJtURSXWThWy/xJtJwixErvg==}
+    dev: false
 
   /safe-regex-test/1.0.0:
     resolution: {integrity: sha512-JBUUzyOgEwXQY1NuPtvcj/qcBDbDmEvWufhlnXZIm75DEHp+afM1r1ujJpJsV/gSM4t59tpDyPi1sd6ZaPFfsA==}

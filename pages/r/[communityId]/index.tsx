@@ -1,19 +1,15 @@
 import { doc, getDoc } from "firebase/firestore";
 import { GetServerSidePropsContext, NextPage } from "next";
 import { firestore } from "../../../firebase/init";
-import { Text } from "@chakra-ui/react";
 import { Community } from "../../../recoil/atoms/communitiesAtom";
+import safeJsonStringify from "safe-json-stringify";
 
 type ICommunityPageProps = {
-  community: Community
-}
+  communityData: Community;
+};
 
-const CommunityPage: NextPage<ICommunityPageProps> = ({community}) => {
-  return (
-    <>
-      <Text>Ping</Text>
-    </>
-  )
+const CommunityPage: NextPage<ICommunityPageProps> = ({ communityData }) => {
+  return <></>;
 };
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
@@ -26,7 +22,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     const communityDoc = await getDoc(communityDocRef);
     return {
       props: {
-        communityData: communityDoc.data(),
+        communityData: JSON.parse(
+          safeJsonStringify({ id: communityDoc.id, ...communityDoc.data() })
+        ),
       },
     };
   } catch (err) {
