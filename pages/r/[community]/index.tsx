@@ -1,9 +1,12 @@
 import { NextPage } from "next";
+import CommunityInfo from "../../../components/communities/CommunityInfo";
 
 const CommunityPage: NextPage = () => {
-    return (
-        <>
-        
-        </>
-    )
-}
+  return (
+    <>
+      <CommunityInfo />
+    </>
+  );
+};
+
+export default CommunityPage;
