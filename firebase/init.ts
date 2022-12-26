@@ -3,7 +3,6 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
-// TODO: Later replace this with env variables
 const firebaseConfig = {
   apiKey: "AIzaSyDY5okMaX3iNhE3P0oxAGR2UQ_mlv1N0HA",
   authDomain: "reddit-clone-9c7ac.firebaseapp.com",
