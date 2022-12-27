@@ -3,12 +3,21 @@ import { GetServerSidePropsContext, NextPage } from "next";
 import { firestore } from "../../../firebase/init";
 import { Community } from "../../../recoil/atoms/communitiesAtom";
 import safeJsonStringify from "safe-json-stringify";
+import {chakra, Text} from "@chakra-ui/react";
+import NotExists from "../../../components/communities/NotExists";
 
 type ICommunityPageProps = {
   communityData: Community;
 };
 
 const CommunityPage: NextPage<ICommunityPageProps> = ({ communityData }) => {
+  
+  if(!communityData) {
+    return (
+      <NotExists />
+    )
+  }
+  
   return <></>;
 };
 
