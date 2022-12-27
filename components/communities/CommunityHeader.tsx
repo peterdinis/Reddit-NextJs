@@ -9,6 +9,11 @@ interface ICommunityHeaderProps {
 const CommunityHeader: React.FC<ICommunityHeaderProps> = ({
   communityData,
 }) => {
+
+  const joinCommunity = () => {
+    return;
+  }
+
   return (
     <>
       <Flex direction="column" width="100%" height="146px">
@@ -38,8 +43,8 @@ const CommunityHeader: React.FC<ICommunityHeaderProps> = ({
                 </Text>
               </Flex>
               <Flex>
-                <Button height="30px" pr={6} pl={6}>
-                  FPP
+                <Button onClick={joinCommunity} height="30px" pr={6} pl={6}>
+                  Join Community
                 </Button>
               </Flex>
             </Flex>
