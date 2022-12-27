@@ -3,8 +3,8 @@ import { GetServerSidePropsContext, NextPage } from "next";
 import { firestore } from "../../../firebase/init";
 import { Community } from "../../../recoil/atoms/communitiesAtom";
 import safeJsonStringify from "safe-json-stringify";
-import {chakra, Text} from "@chakra-ui/react";
 import NotExists from "../../../components/communities/NotExists";
+import CommunityHeader from "../../../components/communities/CommunityHeader";
 
 type ICommunityPageProps = {
   communityData: Community;
@@ -18,7 +18,11 @@ const CommunityPage: NextPage<ICommunityPageProps> = ({ communityData }) => {
     )
   }
   
-  return <></>;
+  return (
+    <>
+      <CommunityHeader communityData={communityData} />
+    </>
+  )
 };
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
