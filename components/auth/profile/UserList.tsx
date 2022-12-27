@@ -4,7 +4,7 @@ import { signOut } from "firebase/auth";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineLogin } from "react-icons/md";
 import { useResetRecoilState } from "recoil";
-import { auth } from "../../../firebase/init"
+import { auth } from "../../../firebase/init";
 import { communityState } from "../../../recoil/atoms/communitiesAtom";
 import { useRouter } from "next/router";
 
@@ -16,7 +16,7 @@ const UserList: React.FC<UserListProps> = () => {
 
   const logout = async () => {
     await signOut(auth);
-    router.push("/")
+    router.push("/");
     resetCommunityState();
   };
 
@@ -47,4 +47,5 @@ const UserList: React.FC<UserListProps> = () => {
     </>
   );
 };
+
 export default UserList;

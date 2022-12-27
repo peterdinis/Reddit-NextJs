@@ -1,6 +1,7 @@
 import { Box, Flex, Icon, Image, Text, Button } from "@chakra-ui/react";
 import { Community } from "../../recoil/atoms/communitiesAtom";
 import { FaReddit } from "react-icons/fa";
+import useCommunityData from "../../hooks/useCommunity";
 
 interface ICommunityHeaderProps {
   communityData: Community;
@@ -9,10 +10,11 @@ interface ICommunityHeaderProps {
 const CommunityHeader: React.FC<ICommunityHeaderProps> = ({
   communityData,
 }) => {
-
-  const joinCommunity = () => {
-    return;
-  }
+  const { communityStateValue, loading, error, onJoinLeaveCommunity } =
+    useCommunityData(!!communityData);
+  const isJoined = !!communityStateValue.mySnippets.find(
+    (item) => item.communityId === communityData.id
+  );
 
   return (
     <>
@@ -43,8 +45,14 @@ const CommunityHeader: React.FC<ICommunityHeaderProps> = ({
                 </Text>
               </Flex>
               <Flex>
-                <Button onClick={joinCommunity} height="30px" pr={6} pl={6}>
-                  Join Community
+                <Button
+                  onClick={() => onJoinLeaveCommunity(communityData, isJoined)}
+                  height="30px"
+                  pr={6}
+                  pl={6}
+                  isLoading={loading}
+                >
+                  {isJoined ? "Joined" : "Join"}
                 </Button>
               </Flex>
             </Flex>
