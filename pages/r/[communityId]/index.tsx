@@ -5,24 +5,26 @@ import { Community } from "../../../recoil/atoms/communitiesAtom";
 import safeJsonStringify from "safe-json-stringify";
 import NotExists from "../../../components/communities/NotExists";
 import CommunityHeader from "../../../components/communities/CommunityHeader";
+import PageContent from "../../../components/shared/PageContent";
 
 type ICommunityPageProps = {
   communityData: Community;
 };
 
 const CommunityPage: NextPage<ICommunityPageProps> = ({ communityData }) => {
-  
-  if(!communityData) {
-    return (
-      <NotExists />
-    )
+  if (!communityData) {
+    return <NotExists />;
   }
-  
+
   return (
     <>
       <CommunityHeader communityData={communityData} />
+      <PageContent>
+        <div>left</div>
+        <div>right</div>
+      </PageContent>
     </>
-  )
+  );
 };
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
