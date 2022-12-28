@@ -6,6 +6,7 @@ import safeJsonStringify from "safe-json-stringify";
 import NotExists from "../../../components/communities/NotExists";
 import CommunityHeader from "../../../components/communities/CommunityHeader";
 import PageContent from "../../../components/shared/PageContent";
+import CreatePostLink from "../../../components/communities/CreatePostLink";
 
 type ICommunityPageProps = {
   communityData: Community;
@@ -20,7 +21,9 @@ const CommunityPage: NextPage<ICommunityPageProps> = ({ communityData }) => {
     <>
       <CommunityHeader communityData={communityData} />
       <PageContent>
-        <div>left</div>
+        <>
+          <CreatePostLink />
+        </>
         <div>right</div>
       </PageContent>
     </>
