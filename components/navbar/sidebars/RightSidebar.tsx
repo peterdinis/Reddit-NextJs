@@ -3,7 +3,7 @@ import { Flex} from "@chakra-ui/react";
 import { User} from "firebase/auth";
 import AuthModal from "../../auth/modal/AuthModal";
 import AuthButtons from "../../auth/buttons/AuthButtons";
-import Icons from "./Icons";
+import Icons from "../Icons";
 import MenuWrapper from "../../auth/profile/MenuWrapper";
 
 type RightSidebarProps = {

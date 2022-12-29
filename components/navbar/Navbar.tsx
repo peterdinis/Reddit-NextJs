@@ -1,13 +1,13 @@
 import { Flex, Image } from "@chakra-ui/react";
 import React from "react";
 import SearchInput from "./SearchInput";
-import RightSidebar from "./RightSidebar";
+import RightSidebar from "./sidebars/RightSidebar";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../../../firebase/init";
-import useDirectory from "../../../hooks/useDirectory";
+import { auth } from "../../firebase/init";
+import useDirectory from "../../hooks/useDirectory";
 import { User } from "firebase/auth";
-import { defaultMenuItem } from "../../../recoil/atoms/directoryMenuAtom";
-import Directory from "./Directory";
+import { defaultMenuItem } from "../../recoil/atoms/directoryMenuAtom";
+import Directory from "./directory/Directory";
 
 const Navbar: React.FC = () => {
   const [user] = useAuthState(auth);
