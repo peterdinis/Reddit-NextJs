@@ -10,13 +10,15 @@ import PostLoader from "../../../../components/post/PostLoader";
 import PostItem from "../../../../components/post/item/PostItem";
 import {auth, firestore} from "../../../../firebase/init";
 import useCommunity from "../../../../hooks/useCommunity"
-import usePosts from "../../../../hooks/usePosts"
+import usePosts from "../../../../hooks/usePosts";
+
+type PostPageProps = {};
 
 const PostPage: React.FC<PostPageProps> = () => {
     const [user] = useAuthState(auth);
     const router = useRouter();
     const { community, pid } = router.query;
-    const { communityStateValue } = useCommunityData();
+    const { communityStateValue } = useCommunity();
     const {
       postStateValue,
       setPostStateValue,
@@ -27,7 +29,6 @@ const PostPage: React.FC<PostPageProps> = () => {
     } = usePosts(communityStateValue.currentCommunity);
   
     const fetchPost = async () => {
-      console.log("FETCHING POST");
   
       setLoading(true);
       try {
@@ -42,7 +43,7 @@ const PostPage: React.FC<PostPageProps> = () => {
       }
       setLoading(false);
     };
-    useEffect(() => {
+    React.useEffect(() => {
       const { pid } = router.query;
   
       if (pid && !postStateValue.selectedPost) {
@@ -51,7 +52,7 @@ const PostPage: React.FC<PostPageProps> = () => {
     }, [router.query, postStateValue.selectedPost]);
   
     return (
-      <PageContentLayout>
+      <PageContent>
         <>
           {loading ? (
             <PostLoader />
@@ -84,14 +85,14 @@ const PostPage: React.FC<PostPageProps> = () => {
           )}
         </>
         <>
-          <About
+          <AboutCommunity
             communityData={
               communityStateValue.currentCommunity
             }
             loading={loading}
           />
         </>
-      </PageContentLayout>
+      </PageContent>
     );
   };
   export default PostPage;
