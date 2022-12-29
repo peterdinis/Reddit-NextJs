@@ -6,7 +6,6 @@ interface PageContentProps {
   children?: React.ReactNode;
 }
 
-// Assumes array of two children are passed
 const PageContent: React.FC<PageContentProps> = ({
   children,
   maxWidth,
