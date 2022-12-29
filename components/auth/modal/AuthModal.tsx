@@ -28,7 +28,6 @@ const AuthModal: React.FC = () => {
   const [user, loading, error] = useAuthState(auth);
 
   React.useEffect(() => {
-    // if user object change this snippet will be running
     if(user) handleClose();
     console.log(user);
   }, [user])

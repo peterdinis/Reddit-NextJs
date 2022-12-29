@@ -53,10 +53,6 @@ const usePosts = (communityData?: Community) => {
       const existingVote = postStateValue.postVotes.find(
         (vote) => vote.postId === post.id
       );
-  
-      // is this an upvote or a downvote?
-      // has this user voted on this post already? was it up or down?
-  
       try {
         let voteChange = vote;
         const batch = writeBatch(firestore);
@@ -65,7 +61,6 @@ const usePosts = (communityData?: Community) => {
         const updatedPosts = [...postStateValue.posts];
         let updatedPostVotes = [...postStateValue.postVotes];
   
-        // New vote
         if (!existingVote) {
           const postVoteRef = doc(
             collection(firestore, "users", `${user.uid}/postVotes`)
@@ -99,7 +94,7 @@ const usePosts = (communityData?: Community) => {
             );
             batch.delete(postVoteRef);
           }
-          // Changing vote
+
           else {
             voteChange = 2 * vote;
             updatedPost.voteStatus = voteStatus + 2 * vote;
@@ -123,8 +118,7 @@ const usePosts = (communityData?: Community) => {
         const postIdx = postStateValue.posts.findIndex(
           (item) => item.id === post.id
         );
-  
-        // if (postIdx !== undefined) {
+
         updatedPosts[postIdx!] = updatedPost;
         updatedState = {
           ...updatedState,
@@ -154,17 +148,14 @@ const usePosts = (communityData?: Community) => {
       console.log("DELETING POST: ", post.id);
   
       try {
-        // if post has an image url, delete it from storage
+
         if (post.imageURL) {
           const imageRef = ref(storage, `posts/${post.id}/image`);
           await deleteObject(imageRef);
         }
-  
-        // delete post from posts collection
         const postDocRef = doc(firestore, "posts", post.id);
         await deleteDoc(postDocRef);
   
-        // Update post state
         setPostStateValue((prev) => ({
           ...prev,
           posts: prev.posts.filter((item) => item.id !== post.id),
@@ -205,7 +196,6 @@ const usePosts = (communityData?: Community) => {
     }, [user, communityStateValue.currentCommunity]);
   
     useEffect(() => {
-      // Logout or no authenticated user
       if (!user?.uid && !loadingUser) {
         setPostStateValue((prev) => ({
           ...prev,

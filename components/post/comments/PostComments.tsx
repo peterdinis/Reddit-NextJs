@@ -129,10 +129,8 @@ type CommentsProps = {
           }));
   
           setComments((prev) => prev.filter((item) => item.id !== comment.id));
-          // return true;
         } catch (error: any) {
           console.log("Error deletig comment", error.message);
-          // return false;
         }
         setDeleteLoading("");
       },
