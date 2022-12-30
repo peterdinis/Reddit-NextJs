@@ -34,7 +34,7 @@ export default function ScrollToTop() {
           onClick={scrollToTop}
           className={styles.iconWrapper}
         >
-          <Text>Back to top</Text>
+          Back to top
         </div>
       )}
     </div>
