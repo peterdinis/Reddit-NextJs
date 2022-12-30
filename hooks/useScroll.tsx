@@ -1,6 +1,7 @@
-import { ArrowUpIcon } from "@chakra-ui/icons";
+
 import React from "react";
 import styles from "../styles/Component.module.css";
+import { Text } from "@chakra-ui/react";
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = React.useState<Boolean>(false);
@@ -33,7 +34,7 @@ export default function ScrollToTop() {
           onClick={scrollToTop}
           className={styles.iconWrapper}
         >
-          <ArrowUpIcon />
+          <Text>Back to top</Text>
         </div>
       )}
     </div>

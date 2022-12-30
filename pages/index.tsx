@@ -26,6 +26,7 @@ import CreatePostLink from "../components/communities/CreatePostLink";
 import RecommendedCommunity from "../components/communities/RecommendedCommunity";
 import PremimumCommunity from "../components/communities/PremiumCommunity";
 import PersonalHome from "../components/communities/PersonalHome";
+import ScrollToTop from "../hooks/useScroll";
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -208,6 +209,7 @@ const Home: NextPage = () => {
         <PremimumCommunity />
         <PersonalHome />
       </Stack>
+      <ScrollToTop />
     </PageContent>
   )
 }
