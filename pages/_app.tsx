@@ -5,9 +5,11 @@ import { theme } from "../chakra/chakraTheme";
 import Layout from "../components/shared/Layout";
 import { RecoilRoot } from "recoil";
 
-const memoize = (fn: any) => {
+/* This snippet fix this bug: https://stackoverflow.com/questions/65506656/recoil-duplicate-atom-key-in-nextjss */
+
+const memoize = (fn: { (console: any): void; (arg0: string): void; }) => {
   let cache = {} as any;
-  return (...args: any) => {
+  return (...args: any[]) => {
     let n = args[0];
     if (n in cache) {
       return cache[n];
@@ -20,11 +22,9 @@ const memoize = (fn: any) => {
   }
 }
 
-
-// ignore in-browser next/js recoil warnings until its fixed.
-const mutedConsole = memoize((console: any) => ({
+const mutedConsole = memoize((console) => ({
   ...console,
-  warn: (...args: any) => args[0].includes('Duplicate atom key')
+  warn: (...args: (string | string[])[]) => args[0].includes('Duplicate atom key')
     ? null
     : console.warn(...args)
 }))
