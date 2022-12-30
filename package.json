@@ -27,6 +27,7 @@
     "firebase-admin": "^11.4.1",
     "firebase-functions": "^4.1.1",
     "framer-motion": "^6",
+    "intercept-stdout": "^0.1.2",
     "moment": "^2.29.4",
     "next": "13.0.7",
     "nookies": "^2.5.2",
