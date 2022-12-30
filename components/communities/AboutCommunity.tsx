@@ -25,8 +25,8 @@ import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import { doc, updateDoc } from "firebase/firestore";
 import { communityState } from "../../recoil/atoms/communitiesAtom";
 
-
-const AboutCommunity: React.FC = ({
+// TODO: Somehow fix any
+const AboutCommunity: any = ({
   communityData,
   pt,
   onCreatePage,

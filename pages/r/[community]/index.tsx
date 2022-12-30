@@ -7,6 +7,7 @@ import NotExists from "../../../components/communities/NotExists";
 import CommunityHeader from "../../../components/communities/CommunityHeader";
 import PageContent from "../../../components/shared/PageContent";
 import CreatePostLink from "../../../components/communities/CreatePostLink";
+import AboutCommunity from "../../../components/communities/AboutCommunity";
 
 type ICommunityPageProps = {
   communityData: Community;
@@ -24,29 +25,34 @@ const CommunityPage: NextPage<ICommunityPageProps> = ({ communityData }) => {
         <>
           <CreatePostLink />
         </>
-        <div>right</div>
+        <AboutCommunity communityData={communityData} />
       </PageContent>
     </>
   );
 };
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
+  console.log("GET SERVER SIDE PROPS RUNNING");
+
   try {
     const communityDocRef = doc(
       firestore,
-      "community",
-      context.query.communityId as string
+      "communities",
+      context.query.community as string
     );
     const communityDoc = await getDoc(communityDocRef);
     return {
       props: {
-        communityData: JSON.parse(
-          safeJsonStringify({ id: communityDoc.id, ...communityDoc.data() })
-        ),
+        communityData: communityDoc.exists()
+          ? JSON.parse(
+              safeJsonStringify({ id: communityDoc.id, ...communityDoc.data() }) // needed for dates
+            )
+          : "",
       },
     };
-  } catch (err) {
-    console.log("Error", err);
+  } catch (error) {
+    // Could create error page here
+    console.log("getServerSideProps error - [community]", error);
   }
 }
 
