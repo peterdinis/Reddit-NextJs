@@ -23,21 +23,15 @@ import { useSetRecoilState } from "recoil";
 import { FaReddit } from "react-icons/fa";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import { doc, updateDoc } from "firebase/firestore";
-import { Community, communityState } from "../../recoil/atoms/communitiesAtom";
+import { communityState } from "../../recoil/atoms/communitiesAtom";
 
-type AboutProps = {
-  communityData: Community;
-  pt?: number;
-  onCreatePage?: boolean;
-  loading?: boolean;
-};
 
 const AboutCommunity: React.FC = ({
   communityData,
   pt,
   onCreatePage,
   loading,
-}: any) => {
+}:any) => {
   const [user] = useAuthState(auth);
   const router = useRouter();
   const selectFileRef = React.useRef<HTMLInputElement>(null);
