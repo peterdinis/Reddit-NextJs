@@ -8,7 +8,7 @@ import { auth } from "../../../firebase/init";
 // TODO: Later add some error handling 
 const Login: React.FC = () => {
   const setAuthModalState = useSetRecoilState(authModalState);
-  const [formError, setFormError] = React.useState("");
+  const [formError] = React.useState("");
   const [loginForm, setLoginForm] = React.useState({
     email: "",
     password: "",
