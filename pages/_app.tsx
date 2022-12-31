@@ -4,8 +4,10 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { theme } from "../chakra/chakraTheme";
 import Layout from "../components/shared/Layout";
 import { RecoilRoot } from "recoil";
+import React from "react";
+import GlobalLoader from "../components/communities/GlobalLoader";
 
-/* This snippet fix this bug: https://stackoverflow.com/questions/65506656/recoil-duplicate-atom-key-in-nextjss */
+/* This snippet fix this bug: https://stackoverflow.com/questions/65506656/recoil-duplicate-atom-key-in-nextjs */
 
 const memoize = (fn: { (console: any): void; (arg0: string): void; }) => {
   let cache = {} as any;
@@ -33,12 +35,14 @@ global.console = mutedConsole(global.console);
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <RecoilRoot>
+    <React.Suspense fallback={<GlobalLoader />}>
+      <RecoilRoot>
       <ChakraProvider theme={theme}>
         <Layout>
           <Component {...pageProps} />
         </Layout>
       </ChakraProvider>
     </RecoilRoot>
+    </React.Suspense>
   );
 }
