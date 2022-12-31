@@ -24,6 +24,7 @@ import {
 import { Post } from "../../../recoil/atoms/postAtom";
 
 import Link from "next/link";
+import { getErrorMessage } from "../../../utils/errorTyping";
 
 export type PostItemContentProps = {
   post: Post;
@@ -67,8 +68,13 @@ const PostItem: React.FC<PostItemContentProps> = ({
       const success = await onDeletePost(post);
       if (!success) throw new Error("Failed to delete post");
       if (router) router.back();
-    } catch (error: any) {
+    } catch (error: unknown) {
       setLoadingDelete(false);
+      let message;
+      if (error instanceof Error) message = error.message;
+      else message = String(error);
+
+      getErrorMessage({ message });
     }
   };
 

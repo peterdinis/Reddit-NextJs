@@ -28,6 +28,7 @@ import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import TextInputs from "./TextInputs";
 import ImageUpload from "./ImageUpload";
 import { postState } from "../../../recoil/atoms/postAtom";
+import { getErrorMessage } from "../../../utils/errorTyping";
 
 const formTabs = [
   {
@@ -111,6 +112,11 @@ const NewPostForm: React.FC<NewPostFormProps> = ({
       router.back();
     } catch (error) {
       setError("Error creating post");
+      let message;
+      if (error instanceof Error) message = error.message;
+      else message = String(error);
+
+      getErrorMessage({ message });
     }
     setLoading(false);
   };

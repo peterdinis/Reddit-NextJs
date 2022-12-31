@@ -14,6 +14,7 @@ import {Post} from "../../recoil/atoms/postAtom";
 import PostItem from "./item/PostItem";
 import { useRouter } from "next/router";
 import usePosts from "../../hooks/usePosts";
+import { getErrorMessage } from "../../utils/errorTyping";
 
 type PostsProps = {
   communityData?: Community;
@@ -76,8 +77,12 @@ const Posts: React.FC<PostsProps> = ({
         },
         postUpdateRequired: false,
       }));
-    } catch (error: any) {
-      throw new Error(error)
+    } catch (error: unknown) {
+      let message;
+      if (error instanceof Error) message = error.message;
+      else message = String(error);
+
+      getErrorMessage({ message });
     }
     setLoading(false);
   };

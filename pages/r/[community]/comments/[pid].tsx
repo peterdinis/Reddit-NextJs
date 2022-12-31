@@ -11,6 +11,7 @@ import PostItem from "../../../../components/post/item/PostItem";
 import {auth, firestore} from "../../../../firebase/init";
 import useCommunity from "../../../../hooks/useCommunity"
 import usePosts from "../../../../hooks/usePosts";
+import { getErrorMessage } from "../../../../utils/errorTyping";
 
 const PostPage: React.FC = () => {
     const [user] = useAuthState(auth);
@@ -36,8 +37,12 @@ const PostPage: React.FC = () => {
           ...prev,
           selectedPost: { id: postDoc.id, ...postDoc.data() } as Post,
         }));
-      } catch (error: any) {
-        throw new Error(error.message)
+      } catch (error: unknown) {
+        let message;
+      if (error instanceof Error) message = error.message;
+      else message = String(error);
+
+      getErrorMessage({ message });
       }
       setLoading(false);
     };

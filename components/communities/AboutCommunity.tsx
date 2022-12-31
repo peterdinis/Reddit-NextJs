@@ -24,6 +24,7 @@ import { FaReddit } from "react-icons/fa";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import { doc, updateDoc } from "firebase/firestore";
 import { communityState } from "../../recoil/atoms/communitiesAtom";
+import { getErrorMessage } from "../../utils/errorTyping";
 
 // TODO: Somehow fix any
 const AboutCommunity: any = ({
@@ -31,7 +32,7 @@ const AboutCommunity: any = ({
   pt,
   onCreatePage,
   loading,
-}:any) => {
+}: any) => {
   const [user] = useAuthState(auth);
   const router = useRouter();
   const selectFileRef = React.useRef<HTMLInputElement>(null);
@@ -69,8 +70,12 @@ const AboutCommunity: any = ({
           imageURL: downloadURL,
         },
       }));
-    } catch (error: any) {
-      throw new Error(error);
+    } catch (error: unknown) {
+      let message;
+      if (error instanceof Error) message = error.message;
+      else message = String(error);
+
+      getErrorMessage({ message });
     }
 
     setImageLoading(false);

@@ -16,6 +16,7 @@ import { FaReddit } from "react-icons/fa";
 import { Community } from "../../recoil/atoms/communitiesAtom";
 import { firestore } from "../../firebase/init";
 import useCommunityData from "../../hooks/useCommunity";
+import { getErrorMessage } from "../../utils/errorTyping";
 
 const RecommendedCommunity: React.FC = () => {
     const [communities, setCommunities] = React.useState<Community[]>([]);
@@ -37,8 +38,12 @@ const RecommendedCommunity: React.FC = () => {
       })) as Community[];
 
       setCommunities(communities);
-    } catch (error: any) {
-      throw new Error(error);
+    } catch (error: unknown) {
+      let message;
+      if (error instanceof Error) message = error.message;
+      else message = String(error);
+
+      getErrorMessage({ message });
     }
     setLoading(false);
   };
