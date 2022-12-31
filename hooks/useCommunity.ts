@@ -12,6 +12,7 @@ import {
 import { auth, firestore } from "../firebase/init";
 import { authModalState } from "../recoil/atoms/authModalAtom";
 import { getMySnippets } from "../firebase/firestore";
+import { getErrorMessage } from "../utils/errorTyping";
 
 const useCommunity = (ssrCommunityData?: boolean) => {
   const [user] = useAuthState(auth);
@@ -32,8 +33,12 @@ const useCommunity = (ssrCommunityData?: boolean) => {
         initSnippetsFetched: true,
       }));
       setLoading(false);
-    } catch (error: any) {
-      setError(error.message);
+    } catch (error: unknown) {
+      let message;
+      if (error instanceof Error) message = error.message;
+      else message = String(error);
+
+      getErrorMessage({ message });
     }
     setLoading(false);
   };
@@ -45,7 +50,6 @@ const useCommunity = (ssrCommunityData?: boolean) => {
   }, [user]);
 
   const getCommunityData = async (communityId: string) => {
-
     try {
       const communityDocRef = doc(
         firestore,
@@ -60,14 +64,17 @@ const useCommunity = (ssrCommunityData?: boolean) => {
           ...communityDoc.data(),
         } as Community,
       }));
-    } catch (error: any) {
-      throw new Error(error.message)
+    } catch (error: unknown) {
+      let message;
+      if (error instanceof Error) message = error.message;
+      else message = String(error);
+
+      getErrorMessage({ message });
     }
     setLoading(false);
   };
 
   const onJoinLeaveCommunity = (community: Community, isJoined?: boolean) => {
-
     if (!user) {
       setAuthModalState({ open: true, view: "login" });
       return;
@@ -90,11 +97,7 @@ const useCommunity = (ssrCommunityData?: boolean) => {
         imageURL: community.imageURL || "",
       };
       batch.set(
-        doc(
-          firestore,
-          `users/${user?.uid}/communitySnippets`,
-          community.id 
-        ),
+        doc(firestore, `users/${user?.uid}/communitySnippets`, community.id),
         newSnippet
       );
 
@@ -107,8 +110,12 @@ const useCommunity = (ssrCommunityData?: boolean) => {
         ...prev,
         mySnippets: [...prev.mySnippets, newSnippet],
       }));
-    } catch (error: any) {
-      throw new Error(error.message)
+    } catch (error: unknown) {
+      let message;
+      if (error instanceof Error) message = error.message;
+      else message = String(error);
+
+      getErrorMessage({ message });
     }
     setLoading(false);
   };
@@ -133,8 +140,12 @@ const useCommunity = (ssrCommunityData?: boolean) => {
           (item) => item.communityId !== communityId
         ),
       }));
-    } catch (error: any) {
-      throw new Error(error.message)
+    } catch (error: unknown) {
+      let message;
+      if (error instanceof Error) message = error.message;
+      else message = String(error);
+
+      getErrorMessage({ message });
     }
     setLoading(false);
   };

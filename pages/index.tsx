@@ -27,6 +27,7 @@ import RecommendedCommunity from "../components/communities/RecommendedCommunity
 import PremimumCommunity from "../components/communities/PremiumCommunity";
 import PersonalHome from "../components/communities/PersonalHome";
 import ScrollToTop from "../hooks/useScroll";
+import { getErrorMessage } from "../utils/errorTyping";
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -92,8 +93,12 @@ const Home: NextPage = () => {
         ...prev,
         posts: feedPosts,
       }));
-    } catch (error: any) {
-      throw new Error(error.message)
+    } catch (error: unknown) {
+      let message;
+      if (error instanceof Error) message = error.message;
+      else message = String(error);
+
+      getErrorMessage({ message });
     }
     setLoading(false);
   };
@@ -116,8 +121,12 @@ const Home: NextPage = () => {
         ...prev,
         posts: posts as Post[],
       }));
-    } catch (error: any) {
-      throw new Error(error.message);
+    } catch (error: unknown) {
+      let message;
+      if (error instanceof Error) message = error.message;
+      else message = String(error);
+
+      getErrorMessage({ message });
     }
     setLoading(false);
   };

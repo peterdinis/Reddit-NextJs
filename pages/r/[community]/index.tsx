@@ -15,6 +15,7 @@ import Posts from "../../../components/post/AllPosts";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRecoilState } from "recoil";
 import React from "react";
+import { getErrorMessage } from "../../../utils/errorTyping";
 
 type ICommunityPageProps = {
   communityData: Community;
@@ -72,8 +73,12 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
           : "",
       },
     };
-  } catch (error: any) {
-    throw new Error(error.message)
+  } catch (error: unknown) {
+    let message;
+    if (error instanceof Error) message = error.message;
+    else message = String(error);
+
+    getErrorMessage({ message });
   }
 }
 
