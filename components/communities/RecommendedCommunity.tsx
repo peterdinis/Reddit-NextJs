@@ -35,11 +35,10 @@ const RecommendedCommunity: React.FC = () => {
         id: doc.id,
         ...doc.data(),
       })) as Community[];
-      console.log("HERE ARE COMS", communities);
 
       setCommunities(communities);
     } catch (error: any) {
-      console.log("getCommunityRecommendations error", error.message);
+      throw new Error(error);
     }
     setLoading(false);
   };
