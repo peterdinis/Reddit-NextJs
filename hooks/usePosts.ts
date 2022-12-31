@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   collection,
   deleteDoc,
   doc,
   getDocs,
-  onSnapshot,
   query,
   where,
   writeBatch,
@@ -22,8 +21,8 @@ const usePosts = (communityData?: Community) => {
     const [user, loadingUser] = useAuthState(auth);
     const [postStateValue, setPostStateValue] = useRecoilState(postState);
     const setAuthModalState = useSetRecoilState(authModalState);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState("");
+    const [loading, setLoading] = React.useState(false);
+    const [error, setError] = React.useState("");
     const router = useRouter();
     const communityStateValue = useRecoilValue(communityState);
   
@@ -190,12 +189,12 @@ const usePosts = (communityData?: Community) => {
       }));
     };
   
-    useEffect(() => {
+    React.useEffect(() => {
       if (!user?.uid || !communityStateValue.currentCommunity) return;
       getCommunityPostVotes(communityStateValue.currentCommunity.id);
     }, [user, communityStateValue.currentCommunity]);
   
-    useEffect(() => {
+    React.useEffect(() => {
       if (!user?.uid && !loadingUser) {
         setPostStateValue((prev) => ({
           ...prev,

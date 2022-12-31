@@ -12,9 +12,7 @@ import {auth, firestore} from "../../../../firebase/init";
 import useCommunity from "../../../../hooks/useCommunity"
 import usePosts from "../../../../hooks/usePosts";
 
-type PostPageProps = {};
-
-const PostPage: React.FC<PostPageProps> = () => {
+const PostPage: React.FC = () => {
     const [user] = useAuthState(auth);
     const router = useRouter();
     const { community, pid } = router.query;
