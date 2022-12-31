@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   collection,
   deleteDoc,
   doc,
   getDocs,
-  onSnapshot,
   query,
   where,
   writeBatch,
@@ -22,13 +21,12 @@ const usePosts = (communityData?: Community) => {
     const [user, loadingUser] = useAuthState(auth);
     const [postStateValue, setPostStateValue] = useRecoilState(postState);
     const setAuthModalState = useSetRecoilState(authModalState);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState("");
+    const [loading, setLoading] = React.useState(false);
+    const [error, setError] = React.useState("");
     const router = useRouter();
     const communityStateValue = useRecoilValue(communityState);
   
     const onSelectPost = (post: Post, postIdx: number) => {
-      console.log("HERE IS STUFF", post, postIdx);
   
       setPostStateValue((prev) => ({
         ...prev,
@@ -139,14 +137,12 @@ const usePosts = (communityData?: Community) => {
         const postRef = doc(firestore, "posts", post.id);
         batch.update(postRef, { voteStatus: voteStatus + voteChange });
         await batch.commit();
-      } catch (error) {
-        console.log("onVote error", error);
+      } catch (error: any) {
+        throw new Error(error.message)
       }
     };
   
     const onDeletePost = async (post: Post): Promise<boolean> => {
-      console.log("DELETING POST: ", post.id);
-  
       try {
 
         if (post.imageURL) {
@@ -169,7 +165,6 @@ const usePosts = (communityData?: Community) => {
         
         return true;
       } catch (error) {
-        console.log("THERE WAS AN ERROR", error);
         return false;
       }
     };
@@ -190,12 +185,12 @@ const usePosts = (communityData?: Community) => {
       }));
     };
   
-    useEffect(() => {
+    React.useEffect(() => {
       if (!user?.uid || !communityStateValue.currentCommunity) return;
       getCommunityPostVotes(communityStateValue.currentCommunity.id);
     }, [user, communityStateValue.currentCommunity]);
   
-    useEffect(() => {
+    React.useEffect(() => {
       if (!user?.uid && !loadingUser) {
         setPostStateValue((prev) => ({
           ...prev,

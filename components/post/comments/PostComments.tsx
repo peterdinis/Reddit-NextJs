@@ -99,7 +99,7 @@ type CommentsProps = {
           postUpdateRequired: true,
         }));
       } catch (error: any) {
-        console.log("onCreateComment error", error.message);
+        throw new Error(error)
       }
       setCommentCreateLoading(false);
     };
@@ -130,7 +130,7 @@ type CommentsProps = {
   
           setComments((prev) => prev.filter((item) => item.id !== comment.id));
         } catch (error: any) {
-          console.log("Error deletig comment", error.message);
+          throw new Error(error)
         }
         setDeleteLoading("");
       },
@@ -151,14 +151,12 @@ type CommentsProps = {
         }));
         setComments(comments as Comment[]);
       } catch (error: any) {
-        console.log("getPostComments error", error.message);
+        throw new Error(error.message)
       }
       setCommentFetchLoading(false);
     };
   
     React.useEffect(() => {
-      console.log("HERE IS SELECTED POST", selectedPost.id);
-  
       getPostComments();
     }, []);
   

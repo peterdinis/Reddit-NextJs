@@ -1,7 +1,6 @@
 
 import React from "react";
 import styles from "../styles/Component.module.css";
-import { Text } from "@chakra-ui/react";
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = React.useState<Boolean>(false);

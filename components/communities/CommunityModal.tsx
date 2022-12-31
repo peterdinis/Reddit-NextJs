@@ -80,7 +80,6 @@ const CommunityModal: React.FC<CreateCommunityModalProps> = ({isOpen, handleClos
         );
       });
     } catch (error: any) {
-      console.log("Transaction error", error);
       setNameError(error.message);
     }
     setSnippetState((prev) => ({

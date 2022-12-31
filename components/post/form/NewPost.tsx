@@ -96,8 +96,6 @@ const NewPostForm: React.FC<NewPostFormProps> = ({
         createdAt: serverTimestamp(),
         editedAt: serverTimestamp(),
       });
-
-      console.log("HERE IS NEW POST ID", postDocRef.id);
       if (selectedFile) {
         const imageRef = ref(storage, `posts/${postDocRef.id}/image`);
         await uploadString(imageRef, selectedFile, "data_url");
@@ -105,7 +103,6 @@ const NewPostForm: React.FC<NewPostFormProps> = ({
         await updateDoc(postDocRef, {
           imageURL: downloadURL,
         });
-        console.log("HERE IS DOWNLOAD URL", downloadURL);
       }
       setPostItems((prev) => ({
         ...prev,
@@ -113,7 +110,6 @@ const NewPostForm: React.FC<NewPostFormProps> = ({
       }));
       router.back();
     } catch (error) {
-      console.log("createPost error", error);
       setError("Error creating post");
     }
     setLoading(false);

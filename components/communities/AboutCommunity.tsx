@@ -62,7 +62,6 @@ const AboutCommunity: any = ({
       await updateDoc(doc(firestore, "communities", communityData.id), {
         imageURL: downloadURL,
       });
-      console.log("HERE IS DOWNLOAD URL", downloadURL);
       setCommunityStateValue((prev) => ({
         ...prev,
         currentCommunity: {
@@ -71,7 +70,7 @@ const AboutCommunity: any = ({
         },
       }));
     } catch (error: any) {
-      console.log("updateImage error", error.message);
+      throw new Error(error);
     }
 
     setImageLoading(false);
