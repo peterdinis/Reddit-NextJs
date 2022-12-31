@@ -27,7 +27,6 @@ const usePosts = (communityData?: Community) => {
     const communityStateValue = useRecoilValue(communityState);
   
     const onSelectPost = (post: Post, postIdx: number) => {
-      console.log("HERE IS STUFF", post, postIdx);
   
       setPostStateValue((prev) => ({
         ...prev,
@@ -138,14 +137,12 @@ const usePosts = (communityData?: Community) => {
         const postRef = doc(firestore, "posts", post.id);
         batch.update(postRef, { voteStatus: voteStatus + voteChange });
         await batch.commit();
-      } catch (error) {
-        console.log("onVote error", error);
+      } catch (error: any) {
+        throw new Error(error.message)
       }
     };
   
     const onDeletePost = async (post: Post): Promise<boolean> => {
-      console.log("DELETING POST: ", post.id);
-  
       try {
 
         if (post.imageURL) {
@@ -168,7 +165,6 @@ const usePosts = (communityData?: Community) => {
         
         return true;
       } catch (error) {
-        console.log("THERE WAS AN ERROR", error);
         return false;
       }
     };

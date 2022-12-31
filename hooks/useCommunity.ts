@@ -33,7 +33,6 @@ const useCommunity = (ssrCommunityData?: boolean) => {
       }));
       setLoading(false);
     } catch (error: any) {
-      console.log("Error getting user snippets", error);
       setError(error.message);
     }
     setLoading(false);
@@ -46,7 +45,6 @@ const useCommunity = (ssrCommunityData?: boolean) => {
   }, [user]);
 
   const getCommunityData = async (communityId: string) => {
-    console.log("GETTING COMMUNITY DATA");
 
     try {
       const communityDocRef = doc(
@@ -63,13 +61,12 @@ const useCommunity = (ssrCommunityData?: boolean) => {
         } as Community,
       }));
     } catch (error: any) {
-      console.log("getCommunityData error", error.message);
+      throw new Error(error.message)
     }
     setLoading(false);
   };
 
   const onJoinLeaveCommunity = (community: Community, isJoined?: boolean) => {
-    console.log("ON JOIN LEAVE", community.id);
 
     if (!user) {
       setAuthModalState({ open: true, view: "login" });
@@ -85,7 +82,6 @@ const useCommunity = (ssrCommunityData?: boolean) => {
   };
 
   const joinCommunity = async (community: Community) => {
-    console.log("JOINING COMMUNITY: ", community.id);
     try {
       const batch = writeBatch(firestore);
 
@@ -111,8 +107,8 @@ const useCommunity = (ssrCommunityData?: boolean) => {
         ...prev,
         mySnippets: [...prev.mySnippets, newSnippet],
       }));
-    } catch (error) {
-      console.log("joinCommunity error", error);
+    } catch (error: any) {
+      throw new Error(error.message)
     }
     setLoading(false);
   };
@@ -137,8 +133,8 @@ const useCommunity = (ssrCommunityData?: boolean) => {
           (item) => item.communityId !== communityId
         ),
       }));
-    } catch (error) {
-      console.log("leaveCommunity error", error);
+    } catch (error: any) {
+      throw new Error(error.message)
     }
     setLoading(false);
   };

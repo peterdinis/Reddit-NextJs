@@ -37,7 +37,7 @@ const PostPage: React.FC = () => {
           selectedPost: { id: postDoc.id, ...postDoc.data() } as Post,
         }));
       } catch (error: any) {
-        console.log("fetchPost error", error.message);
+        throw new Error(error.message)
       }
       setLoading(false);
     };

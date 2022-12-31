@@ -151,7 +151,7 @@ type CommentsProps = {
         }));
         setComments(comments as Comment[]);
       } catch (error: any) {
-        console.log("getPostComments error", error.message);
+        throw new Error(error.message)
       }
       setCommentFetchLoading(false);
     };
