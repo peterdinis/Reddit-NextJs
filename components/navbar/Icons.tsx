@@ -8,6 +8,7 @@ import {
   IoVideocamOutline,
 } from "react-icons/io5";
 import useDirectory from "../../hooks/useDirectory";
+import Link from "next/link";
 
 type IconsProps = {};
 
@@ -29,7 +30,9 @@ const Icons: React.FC<IconsProps> = () => {
           borderRadius={4}
           _hover={{ bg: "gray.200" }}
         >
-          <Icon as={BsArrowUpRightCircle} fontSize={20} />
+          <Icon as={BsArrowUpRightCircle} fontSize={20}>
+            <Link href="/r/popular" />
+          </Icon>
         </Flex>
         <Flex
           mr={1.5}
@@ -39,17 +42,9 @@ const Icons: React.FC<IconsProps> = () => {
           borderRadius={4}
           _hover={{ bg: "gray.200" }}
         >
-          <Icon as={IoFilterCircleOutline} fontSize={22} />
-        </Flex>
-        <Flex
-          mr={1.5}
-          ml={1.5}
-          padding={1}
-          cursor="pointer"
-          borderRadius={4}
-          _hover={{ bg: "gray.200" }}
-        >
-          <Icon as={IoVideocamOutline} fontSize={22} />
+          <Icon as={IoFilterCircleOutline} fontSize={22}>
+            <Link href="/now" />
+          </Icon>
         </Flex>
       </Box>
       <>
