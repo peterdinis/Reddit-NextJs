@@ -17,10 +17,12 @@ function toErrorWithMessage(maybeError: unknown): ErrorWithMessage {
   try {
     return new Error(JSON.stringify(maybeError));
   } catch {
+    // fallback in case there's an error stringifying the maybeError
+    // like with circular references for example.
     return new Error(String(maybeError));
   }
 }
 
-function getErrorMessage(error: unknown) {
+export function getErrorMessage(error: unknown) {
   return toErrorWithMessage(error).message;
 }

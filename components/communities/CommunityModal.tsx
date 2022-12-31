@@ -22,6 +22,7 @@ import { useSetRecoilState } from "recoil";
 import { firestore } from "../../firebase/init";
 import ModalWrapper from "../shared/ModalWrapper";
 import { communityState } from "../../recoil/atoms/communitiesAtom";
+import { getErrorMessage } from "../../utils/errorTyping";
 
 type CreateCommunityModalProps = {
   isOpen: boolean;
@@ -79,8 +80,12 @@ const CommunityModal: React.FC<CreateCommunityModalProps> = ({isOpen, handleClos
           }
         );
       });
-    } catch (error: any) {
-      setNameError(error.message);
+    } catch (error: unknown) {
+      let message;
+      if (error instanceof Error) message = error.message;
+      else message = String(error);
+
+      getErrorMessage({ message });
     }
     setSnippetState((prev) => ({
       ...prev,
