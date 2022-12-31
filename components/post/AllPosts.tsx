@@ -77,7 +77,8 @@ const Posts: React.FC<PostsProps> = ({
         postUpdateRequired: false,
       }));
     } catch (error: any) {
-      throw new Error(error)
+      console.log(error);
+      return error;
     }
     setLoading(false);
   };
