@@ -7,11 +7,9 @@ import { useResetRecoilState } from "recoil";
 import { auth } from "../../../firebase/init";
 import { communityState } from "../../../recoil/atoms/communitiesAtom";
 import { useRouter } from "next/router";
-import ThemeToggle from "../../shared/ThemeToggle";
+import { SettingsIcon } from "@chakra-ui/icons";
 
-type UserListProps = {};
-
-const UserList: React.FC<UserListProps> = () => {
+const UserList: React.FC = () => {
   const router = useRouter();
   const resetCommunityState = useResetRecoilState(communityState);
 
@@ -46,14 +44,17 @@ const UserList: React.FC<UserListProps> = () => {
         </Flex>
       </MenuItem>
       <MenuDivider />
-      {/* Update this later */}
-      {/* <MenuItem
+      <MenuItem
         fontSize="10pt"
         fontWeight={700}
         _hover={{ bg: "blue.500", color: "white" }}
+        onClick={logout}
       >
-        <ThemeToggle />
-      </MenuItem> */}
+        <Flex alignItems="center">
+          <Icon fontSize={20} mr={2} as={SettingsIcon} />
+          Settings
+        </Flex>
+      </MenuItem>
     </>
   );
 };
