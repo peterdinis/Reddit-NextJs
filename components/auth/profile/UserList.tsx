@@ -7,6 +7,7 @@ import { useResetRecoilState } from "recoil";
 import { auth } from "../../../firebase/init";
 import { communityState } from "../../../recoil/atoms/communitiesAtom";
 import { useRouter } from "next/router";
+import ThemeToggle from "../../shared/ThemeToggle";
 
 type UserListProps = {};
 
@@ -44,6 +45,15 @@ const UserList: React.FC<UserListProps> = () => {
           Log Out
         </Flex>
       </MenuItem>
+      <MenuDivider />
+      {/* Update this later */}
+      {/* <MenuItem
+        fontSize="10pt"
+        fontWeight={700}
+        _hover={{ bg: "blue.500", color: "white" }}
+      >
+        <ThemeToggle />
+      </MenuItem> */}
     </>
   );
 };
