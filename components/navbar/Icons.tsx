@@ -5,13 +5,10 @@ import { GrAdd } from "react-icons/gr";
 import {
   IoFilterCircleOutline,
   IoNotificationsOutline,
-  IoVideocamOutline,
 } from "react-icons/io5";
 import useDirectory from "../../hooks/useDirectory";
 
-type IconsProps = {};
-
-const Icons: React.FC<IconsProps> = () => {
+const Icons: React.FC= () => {
   const { toggleMenuOpen } = useDirectory();
   return (
     <Flex alignItems="center" flexGrow={1}>
@@ -40,16 +37,6 @@ const Icons: React.FC<IconsProps> = () => {
           _hover={{ bg: "gray.200" }}
         >
           <Icon as={IoFilterCircleOutline} fontSize={22} />
-        </Flex>
-        <Flex
-          mr={1.5}
-          ml={1.5}
-          padding={1}
-          cursor="pointer"
-          borderRadius={4}
-          _hover={{ bg: "gray.200" }}
-        >
-          <Icon as={IoVideocamOutline} fontSize={22} />
         </Flex>
       </Box>
       <>
