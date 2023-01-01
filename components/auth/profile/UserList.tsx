@@ -7,10 +7,9 @@ import { useResetRecoilState } from "recoil";
 import { auth } from "../../../firebase/init";
 import { communityState } from "../../../recoil/atoms/communitiesAtom";
 import { useRouter } from "next/router";
+import { SettingsIcon } from "@chakra-ui/icons";
 
-type UserListProps = {};
-
-const UserList: React.FC<UserListProps> = () => {
+const UserList: React.FC = () => {
   const router = useRouter();
   const resetCommunityState = useResetRecoilState(communityState);
 
@@ -18,6 +17,10 @@ const UserList: React.FC<UserListProps> = () => {
     await signOut(auth);
     router.push("/");
     resetCommunityState();
+  };
+
+  const pushToSettings = () => {
+    router.push("/settings");
   };
 
   return (
@@ -42,6 +45,34 @@ const UserList: React.FC<UserListProps> = () => {
         <Flex alignItems="center">
           <Icon fontSize={20} mr={2} as={MdOutlineLogin} />
           Log Out
+        </Flex>
+      </MenuItem>
+      <MenuDivider />
+      <MenuItem
+        fontSize="10pt"
+        fontWeight={700}
+        _hover={{ bg: "blue.500", color: "white" }}
+        onClick={logout}
+      >
+        <Flex alignItems="center">
+          <Icon
+            onClick={pushToSettings}
+            fontSize={20}
+            mr={2}
+            as={SettingsIcon}
+          />
+          Settings
+        </Flex>
+      </MenuItem>
+      <MenuDivider />
+      <MenuItem
+        fontSize="10pt"
+        fontWeight={700}
+        _hover={{ bg: "blue.500", color: "white" }}
+        onClick={logout}
+      >
+        <Flex alignItems="center">
+          Create Avatar
         </Flex>
       </MenuItem>
     </>

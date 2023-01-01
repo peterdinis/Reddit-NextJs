@@ -1,5 +1,4 @@
 import React from "react";
-
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import {
   Box,
@@ -22,9 +21,7 @@ import { VscAccount } from "react-icons/vsc";
 import { IoSparkles } from "react-icons/io5";
 import { authModalState } from "../../../recoil/atoms/authModalAtom";
 
-type MenuWrapperProps = {};
-
-const MenuWrapper: React.FC<MenuWrapperProps> = () => {
+const MenuWrapper: React.FC= () => {
   const [authModal, setModalState] = useRecoilState(authModalState);
   const [user] = useAuthState(auth);
   return (
