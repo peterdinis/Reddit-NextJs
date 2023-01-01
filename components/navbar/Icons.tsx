@@ -20,6 +20,10 @@ const Icons: React.FC= () => {
     router.push("/now");
   }
 
+  const pushToNewPost = () => {
+    router.push("/submit")
+  }
+
   const { toggleMenuOpen } = useDirectory();
   return (
     <Flex alignItems="center" flexGrow={1}>
@@ -81,7 +85,7 @@ const Icons: React.FC= () => {
           _hover={{ bg: "gray.200" }}
           onClick={toggleMenuOpen}
         >
-          <Icon as={GrAdd} fontSize={20} />
+          <Icon onClick={pushToNewPost} as={GrAdd} fontSize={20} />
         </Flex>
       </>
     </Flex>

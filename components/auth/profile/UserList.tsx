@@ -19,6 +19,10 @@ const UserList: React.FC = () => {
     resetCommunityState();
   };
 
+  const pushToSettings = () => {
+    router.push("/settings");
+  }
+
   return (
     <>
       <MenuItem
@@ -51,7 +55,7 @@ const UserList: React.FC = () => {
         onClick={logout}
       >
         <Flex alignItems="center">
-          <Icon fontSize={20} mr={2} as={SettingsIcon} />
+          <Icon onClick={pushToSettings} fontSize={20} mr={2} as={SettingsIcon} />
           Settings
         </Flex>
       </MenuItem>
