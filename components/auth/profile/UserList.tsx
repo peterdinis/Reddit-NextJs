@@ -21,7 +21,7 @@ const UserList: React.FC = () => {
 
   const pushToSettings = () => {
     router.push("/settings");
-  }
+  };
 
   return (
     <>
@@ -55,8 +55,24 @@ const UserList: React.FC = () => {
         onClick={logout}
       >
         <Flex alignItems="center">
-          <Icon onClick={pushToSettings} fontSize={20} mr={2} as={SettingsIcon} />
+          <Icon
+            onClick={pushToSettings}
+            fontSize={20}
+            mr={2}
+            as={SettingsIcon}
+          />
           Settings
+        </Flex>
+      </MenuItem>
+      <MenuDivider />
+      <MenuItem
+        fontSize="10pt"
+        fontWeight={700}
+        _hover={{ bg: "blue.500", color: "white" }}
+        onClick={logout}
+      >
+        <Flex alignItems="center">
+          Create Avatar
         </Flex>
       </MenuItem>
     </>
