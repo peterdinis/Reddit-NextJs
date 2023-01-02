@@ -21,7 +21,7 @@ import {
   IoArrowUpCircleSharp,
   IoBookmarkOutline,
 } from "react-icons/io5";
-import { Post } from "../../../recoil/atoms/postAtom";
+import { Post } from "../../../recoil/interfaces/IPost"
 
 import Link from "next/link";
 import { getErrorMessage } from "../../../utils/errorTyping";

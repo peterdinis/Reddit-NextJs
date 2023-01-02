@@ -21,7 +21,8 @@ import {
 } from "firebase/firestore";
 import { useSetRecoilState } from "recoil";
 import { authModalState } from "../../../recoil/atoms/authModalAtom";
-import { Post, postState } from "../../../recoil/atoms/postAtom";
+import {postState } from "../../../recoil/atoms/postAtom";
+import { Post } from "../../../recoil/interfaces/IPost";
 import { firestore } from "../../../firebase/init";
 import CommentItem, { Comment } from "./CommentItem";
 import CommentInput from "./Input";
