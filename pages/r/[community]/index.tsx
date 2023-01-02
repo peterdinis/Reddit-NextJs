@@ -2,9 +2,9 @@ import { doc, getDoc } from "firebase/firestore";
 import { GetServerSidePropsContext, NextPage } from "next";
 import { auth, firestore } from "../../../firebase/init";
 import {
-  Community,
   communityState,
 } from "../../../recoil/atoms/communitiesAtom";
+import {  Community,} from "../../../recoil/interfaces/ICommunity";
 import safeJsonStringify from "safe-json-stringify";
 import NotExists from "../../../components/communities/NotExists";
 import CommunityHeader from "../../../components/communities/CommunityHeader";

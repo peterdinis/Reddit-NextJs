@@ -4,9 +4,9 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { communityState } from "../recoil/atoms/communitiesAtom";
 import {
   defaultMenuItem,
-  DirectoryMenuItem,
   directoryMenuState,
 } from "../recoil/atoms/directoryMenuAtom";
+import { DirectoryMenuItem } from "../recoil/interfaces/IDirectory";
 import { FaReddit } from "react-icons/fa";
 
 const useDirectory = () => {
