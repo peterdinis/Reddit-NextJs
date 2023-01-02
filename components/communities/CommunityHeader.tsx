@@ -1,5 +1,5 @@
 import { Box, Flex, Icon, Image, Text, Button } from "@chakra-ui/react";
-import { Community } from "../../recoil/atoms/communitiesAtom";
+import { Community } from "../../recoil/interfaces/ICommunity";
 import { FaReddit } from "react-icons/fa";
 import useCommunityData from "../../hooks/useCommunity";
 

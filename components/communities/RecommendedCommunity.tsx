@@ -13,7 +13,7 @@ import {
 import React from "react";
 import Link from "next/link";
 import { FaReddit } from "react-icons/fa";
-import { Community } from "../../recoil/atoms/communitiesAtom";
+import { Community } from "../../recoil/interfaces/ICommunity";
 import { firestore } from "../../firebase/init";
 import useCommunityData from "../../hooks/useCommunity";
 import { getErrorMessage } from "../../utils/errorTyping";

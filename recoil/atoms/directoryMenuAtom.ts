@@ -1,19 +1,6 @@
 import { atom } from "recoil";
-import { IconType } from "react-icons";
 import { TiHome } from "react-icons/ti";
-
-export type DirectoryMenuItem = {
-  displayText: string;
-  link: string;
-  icon: IconType;
-  iconColor: string;
-  imageURL?: string;
-};
-
-interface DirectoryMenuState {
-  isOpen: boolean;
-  selectedMenuItem: DirectoryMenuItem;
-}
+import { DirectoryMenuState } from "../interfaces/IDirectory";
 
 export const defaultMenuItem = {
   displayText: "Home",

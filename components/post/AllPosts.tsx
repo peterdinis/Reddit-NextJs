@@ -7,10 +7,10 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import { Community } from "../../recoil/atoms/communitiesAtom";
+import { Community } from "../../recoil/interfaces/ICommunity";
 import { firestore } from "../../firebase/init";
 import PostLoader from "./PostLoader";
-import {Post} from "../../recoil/atoms/postAtom";
+import {Post} from "../../recoil/interfaces/IPost";
 import PostItem from "./item/PostItem";
 import { useRouter } from "next/router";
 import usePosts from "../../hooks/usePosts";

@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Text } from "@chakra-ui/react";
 import { FaReddit } from "react-icons/fa";
-import { CommunitySnippet } from "../../../recoil/atoms/communitiesAtom";
+import { CommunitySnippet } from "../../../recoil/interfaces/ICommunity";
 import MenuListItem from "./MenuListItems";
 
 type ModeratingProps = {

@@ -2,7 +2,7 @@ import React from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Post } from "../../../../recoil/atoms/postAtom";
+import { Post } from "../../../../recoil/interfaces/IPost";
 import AboutCommunity from "../../../../components/communities/AboutCommunity";
 import PageContent from "../../../../components/shared/PageContent";
 import Comments from "../../../../components/post/comments/PostComments";

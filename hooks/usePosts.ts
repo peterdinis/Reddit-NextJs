@@ -12,13 +12,15 @@ import { deleteObject, ref } from "firebase/storage";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { authModalState } from "../recoil/atoms/authModalAtom";
-import { Community, communityState } from "../recoil/atoms/communitiesAtom";
+import { Community} from "../recoil/interfaces/ICommunity";
+import { communityState } from "../recoil/atoms/communitiesAtom";
 import { useRouter } from "next/router";
 import { auth, firestore, storage } from "../firebase/init";
-import { Post, postState, PostVote } from "../recoil/atoms/postAtom";
+import { Post,PostVote } from "../recoil/interfaces/IPost";
 import { getErrorMessage } from "../utils/errorTyping";
+import { postState } from "../recoil/atoms/postAtom";
 
-const usePosts = (communityData?: Community) => {
+const usePosts= (communityData?: Community) => {
   const [user, loadingUser] = useAuthState(auth);
   const [postStateValue, setPostStateValue] = useRecoilState(postState);
   const setAuthModalState = useSetRecoilState(authModalState);

@@ -18,7 +18,7 @@ import { useRecoilValue } from "recoil";
 import usePosts from "../hooks/usePosts";
 import { auth, firestore } from "../firebase/init";
 import { communityState } from "../recoil/atoms/communitiesAtom";
-import {Post, PostVote}from "../recoil/atoms/postAtom";
+import {Post, PostVote}from "../recoil/interfaces/IPost";
 import PostLoader from "../components/post/PostLoader";
 import PostItem from "../components/post/item/PostItem";
 import PageContent from "../components/shared/PageContent";

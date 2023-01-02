@@ -6,9 +6,9 @@ import { useRecoilState, useSetRecoilState } from "recoil";
 import {
   Community,
   CommunitySnippet,
-  communityState,
-  defaultCommunity,
-} from "../recoil/atoms/communitiesAtom";
+} from "../recoil/interfaces/ICommunity";
+import {communityState,
+  defaultCommunity} from "../recoil/atoms/communitiesAtom"
 import { auth, firestore } from "../firebase/init";
 import { authModalState } from "../recoil/atoms/authModalAtom";
 import { getMySnippets } from "../firebase/firestore";
